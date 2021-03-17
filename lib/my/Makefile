@@ -5,6 +5,8 @@
 ## create a makefile
 ##
 
+RM = rm -rf
+
 SRC	=	my_compute_power_rec.c		\
 		my_compute_square_root.c	\
 		my_find_prime_sup.c		\
@@ -39,17 +41,19 @@ SRC	=	my_compute_power_rec.c		\
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	Makefile
+NAME	=	libmy.a
 
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-		ar rc libmy.a *.o $(OBJ)
-		mv libmy.a ../
+		ar rc $(NAME) *.o $(OBJ)
+		mv $(NAME) ../
 clean:
-		rm -f $(OBJ)
+		$(RM) $(OBJ)
 
 fclean:		clean
-		rm -f ../libmy.a
+		$(RM) ../$(NAME)
 
 re:		fclean all
+
+.PHONY: all clean fclean re

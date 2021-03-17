@@ -5,6 +5,9 @@
 ** copy the content of a str to another
 */
 
+#include <stdlib.h>
+#include "my.h"
+
 char *my_strcpy(char *dest, char const *src)
 {
     int i;
@@ -27,4 +30,12 @@ char *my_strncpy(char *dest, char const *src, int n)
         dest[i] = '\0';
     }
     return dest;
+}
+
+char *my_strdup(char const *src)
+{
+    char *str = malloc(sizeof(char) * (my_strlen(src) + 1));
+
+    my_strcpy(str, src);
+    return (str);
 }

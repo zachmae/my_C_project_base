@@ -13,3 +13,8 @@ int my_putstr(char const *str)
 {
     write(1, str, my_strlen(str));
 }
+
+int my_puterror(char const *str)
+{
+    write(1, str, my_strlen(str));
+}

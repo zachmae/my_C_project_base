@@ -10,7 +10,7 @@
 int error_handle(int ac, char **av)
 {
     if (ac == 0) {
-        write(2, "read usage.\n", 13);
+        my_puterror("read usage.\n");
         return 84;
     }
     return 0;
@@ -18,12 +18,11 @@ int error_handle(int ac, char **av)
 
 int print_usage(int ac, char **av)
 {
-    if (ac == 2)
-        if (my_strcmp(av[1], "-h") == 0) {
-            my_printf("USAGE\n\t./executable\n");
-            my_printf("DESCRIPTION\n\tsome description\n");
-            return 1;
-        }
+    if (ac == 2 && my_strcmp(av[1], "-h") == 0) {
+        my_printf("USAGE\n\t./executable\n");
+        my_printf("DESCRIPTION\n\tsome description\n");
+        return 1;
+    }
     return 0;
 }
 
