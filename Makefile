@@ -5,16 +5,13 @@
 ## Makefile
 ##
 
-CC = gcc -o
-CFLAGS	+=	-Werror -Wextra
-CPPFLAGS +=  -I./include
-RM = rm -rf
+NAME	=	prog
 
-IDIR	=	include
+CC =		gcc
+CFLAGS	=	-Werror -Wextra
+CPPFLAGS += 	-I./include
 
 SDIR	=	sources
-
-TDIR	=	tests
 
 SRC		=	\
 
@@ -23,7 +20,6 @@ MAIN	=	$(SDIR)/main.c
 OBJ		=	$(SRC:.c=.o) \
 			$(MAIN:.c=.o)
 
-NAME	=	prog
 
 LIBFLAG	=	-L./lib -lmy
 
@@ -31,7 +27,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C lib/my
-	$(CC) $(NAME) $(OBJ) $(CFLAGS) $(LIBFLAG)
+	$(CC) -o  $(NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS) $(LIBFLAG)
 
 clean:
 	@make -C lib/my clean
@@ -43,4 +39,10 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re
+debug:	CFLAGS += -g
+
+debug: ${OBJ}
+	@make -C lib/my debug
+	${CC} -o $(NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS) $(LIBFLAG)
+
+.PHONY: all clean fclean re debug

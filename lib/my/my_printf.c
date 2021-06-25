@@ -60,12 +60,11 @@ void switch_casep2(char flag, va_list args)
 void my_printf(char *s, ...)
 {
     va_list args;
-    int c = 0;
     char *order = s;
     int n = my_strlen(s);
 
     va_start(args, s);
-    for (c; c < n ; c++) {
+    for (int c = 0; c < n ; c++) {
         if (order[c] == '%') {
             c++;
             if (order[c] == '%')

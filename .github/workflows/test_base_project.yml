@@ -1,0 +1,35 @@
+name: base_project
+
+on:
+  push:
+    branches: [ master, main, dev ]
+  pull_request:
+    branches: [ master, main, dev ]
+
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  test_server:
+    name: test_project_base
+    container: epitechcontent/epitest-docker
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: compile
+      run: make
+    - name: test_bash_project_base
+      if: ${{ always() }}
+      run: ./tests/test_project_base.sh > result_tests_project_base ; cat result_tests_project_base
+    - name: Artifact_project_base
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2.2.3
+      with:
+        name: result_tests_project_base
+        path: ./result_tests_project_base

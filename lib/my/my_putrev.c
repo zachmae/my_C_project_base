@@ -9,9 +9,7 @@
 
 void my_putrev(char *str)
 {
-    int c = my_strlen(str);
-
-    for (c ; c != -1; c--)
+    for (int c = my_strlen(str) ; c != -1; c--)
         my_putchar(str[c]);
     return;
 }

@@ -5,32 +5,35 @@
 ** main function
 */
 
-#include "../include/prog.h"
+#include <stdbool.h>
+#include "prog.h"
+#include "const.h"
+#include "my.h"
 
 int error_handle(int ac, char **av)
 {
     if (ac == 0) {
         my_puterror("read usage.\n");
-        return 84;
+        return ERROR;
     }
-    return 0;
+    return SUCCES;
 }
 
-int print_usage(int ac, char **av)
+bool print_usage(int ac, char **av)
 {
     if (ac == 2 && my_strcmp(av[1], "-h") == 0) {
         my_printf("USAGE\n\t./executable\n");
         my_printf("DESCRIPTION\n\tsome description\n");
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 int main(int ac, char **av)
 {
-    if (print_usage(ac, av) == 1)
-        return 0;
-    if (error_handle(ac, av) == 84)
-        return 84;
-    return 0;
+    if (print_usage(ac, av) == true)
+        return SUCCES;
+    if (error_handle(ac, av) == ERROR)
+        return ERROR;
+    return SUCCES;
 }

@@ -11,8 +11,6 @@
 int my_showstr(char const *str)
 {
     int cpt = 0;
-    int v;
-    int r;
 
     for (;str[cpt] != '\0'; cpt++) {
         if (str[cpt] > 31 && str[cpt] < 127)

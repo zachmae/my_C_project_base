@@ -48,6 +48,7 @@ void my_put_octal(int nb);
 void my_put_hexa(int nb);
 void my_put_uphexa(int nb);
 void my_put_ptr(int nb);
+char *read_file(char const *filename);
 char **str_to_word_array(char *str, char lim);
 
 #endif //MY_H//

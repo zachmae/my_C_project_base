@@ -11,11 +11,8 @@ char *my_revstr(char *str)
     int c = 0;
     int t = 0;
 
-    while (str[c] != '\0') {
-        c++;
-    }
+    for (;str[c] != '\0'; ++c);
     c--;
-
     while (i <= c) {
         t = str[i];
         str[i] = str[c];

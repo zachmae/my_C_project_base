@@ -5,8 +5,6 @@
 ## create a makefile
 ##
 
-RM = rm -rf
-
 SRC	=	my_compute_power_rec.c		\
 		my_compute_square_root.c	\
 		my_find_prime_sup.c		\
@@ -17,7 +15,6 @@ SRC	=	my_compute_power_rec.c		\
 		my_put_nbr.c			\
 		my_putstr.c			\
 		my_revstr.c			\
-		my_showmem.c			\
 		my_showstr.c			\
 		my_sort_int_array.c		\
 		my_strcapitalize.c		\
@@ -37,16 +34,19 @@ SRC	=	my_compute_power_rec.c		\
 		my_putrev.c			\
 		my_printf.c			\
 		my_base.c			\
+		my_readfile.c			\
 		my_str_to_word_array.c 	\
 
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	libmy.a
 
+CFLAGS	=	-Wall -Wextra -I./include
+
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-		ar rc $(NAME) *.o $(OBJ)
+		ar rc $(NAME) $(OBJ)
 		mv $(NAME) ../
 clean:
 		$(RM) $(OBJ)
@@ -56,4 +56,8 @@ fclean:		clean
 
 re:		fclean all
 
-.PHONY: all clean fclean re
+debug: CFLAGS += -g
+
+debug: re
+
+.PHONY: all clean fclean re debug

@@ -7,19 +7,12 @@
 
 int my_compute_square_root(int nb)
 {
-    int c;
-    int V;
+    int v = 1;
 
-    c = 0;
-    V = 1;
-    while (c <  nb) {
-        c = V * V;
-        if (c < nb) {
-            V++;
-        } else if (c == nb) {
-            return V;
-        } else {
-            return 0;
-        }
+    for (int c = 0; c * c <= nb; ++c) {
+        v = c * c;
+        if (v == nb)
+            return c;
     }
+    return -1;
 }
