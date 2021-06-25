@@ -26,7 +26,7 @@ jobs:
       run: make
     - name: test_bash_project_base
       if: ${{ always() }}
-      run: ./tests/test_project_base.sh > result_tests_project_base ; cat result_tests_project_base
+      run: ./tests/test_base.sh > result_tests_project_base ; cat result_tests_project_base
     - name: Artifact_project_base
       if: ${{ always() }}
       uses: actions/upload-artifact@v2.2.3
