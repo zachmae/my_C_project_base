@@ -1,0 +1,8 @@
+prog
+*gc*
+*.o
+vgcore*
+*~
+.vscode
+lib/libmy.a
+data
